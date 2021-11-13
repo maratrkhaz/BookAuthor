@@ -86,7 +86,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDI2OTEsImV4cCI6MTYxODkwNzQ5MSwiaWF0IjoxNjE4MzAyNjkxfQ.QAVQQvinYWp7w_VdWk4O7pmzBpxDuugO1Nsownii2qn3F8k1X8bu32w1XvqH-JyDqhbczPpLe_PsWVNEMtCxZQ",
+						"value": "",
 						"type": "text"
 					}
 				],
@@ -207,7 +207,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/api/books?Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDIxNDUsImV4cCI6MTYxODkwNjk0NSwiaWF0IjoxNjE4MzAyMTQ1fQ.J1_uSpmpFnjraXYzLE_kyKnt11mlmkIcsj5ykjkcOTsNoc3QMhEHUztuB0LB8f9Yp9Ucio7sJMCvxkL8pa9upg",
+					"raw": "{{url}}/api/books?Authorization= ",
 					"host": [
 						"{{url}}"
 					],
@@ -218,7 +218,7 @@
 					"query": [
 						{
 							"key": "Authorization",
-							"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDIxNDUsImV4cCI6MTYxODkwNjk0NSwiaWF0IjoxNjE4MzAyMTQ1fQ.J1_uSpmpFnjraXYzLE_kyKnt11mlmkIcsj5ykjkcOTsNoc3QMhEHUztuB0LB8f9Yp9Ucio7sJMCvxkL8pa9upg"
+							"value": ""
 						}
 					]
 				}
@@ -260,7 +260,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDIxNDUsImV4cCI6MTYxODkwNjk0NSwiaWF0IjoxNjE4MzAyMTQ1fQ.J1_uSpmpFnjraXYzLE_kyKnt11mlmkIcsj5ykjkcOTsNoc3QMhEHUztuB0LB8f9Yp9Ucio7sJMCvxkL8pa9upg",
+						"value": "",
 						"type": "text"
 					}
 				],
