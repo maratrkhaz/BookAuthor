@@ -1,0 +1,4 @@
+export const MODAL_ACTION_TYPES = {
+    OPEN_MODAL: 'OPEN_MODAL',
+    CLOSE_MODAL: 'CLOSE_MODAL'
+}

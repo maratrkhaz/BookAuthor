@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "88f4aefd-5849-4c70-a991-2bbb81a232f2",
+		"name": "BookAuthor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data=pm.response.json();\r",
+							"\r",
+							"//response has to be OK(200)\r",
+							"pm.test(\"response is OK\", function() {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"has needed properties\", function() {\r",
+							"    pm.expect(data[0]).to.have.property('bookId');\r",
+							"    pm.expect(data[0]).to.have.property('title');\r",
+							"    pm.expect(data[0]).to.have.property('description');\r",
+							"    pm.expect(data[0]).to.have.property('categoryId');\r",
+							"    pm.expect(data[0]).to.have.property('category');\r",
+							"})\r",
+							"\r",
+							"pm.test(\"has Paging header\", function() {\r",
+							"    pm.response.to.have.header(\"paging\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/books",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get books pagesize=1&pageNumber=1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/books?pagesize=1&pageNumber=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "pagesize",
+							"value": "1"
+						},
+						{
+							"key": "pageNumber",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get book",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDI2OTEsImV4cCI6MTYxODkwNzQ5MSwiaWF0IjoxNjE4MzAyNjkxfQ.QAVQQvinYWp7w_VdWk4O7pmzBpxDuugO1Nsownii2qn3F8k1X8bu32w1XvqH-JyDqhbczPpLe_PsWVNEMtCxZQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/books/43185243-f2b1-475c-abf3-02590e822aee",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"43185243-f2b1-475c-abf3-02590e822aee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Successfull",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"mark@t.com\",\r\n    \"password\":\"Pa$$w0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login and Save token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const user = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Has properties\", function() {\r",
+							"    pm.expect(user).to.have.property('displayName');\r",
+							"    pm.expect(user).to.have.property('username');\r",
+							"    pm.expect(user).to.have.property('token');\r",
+							"});\r",
+							"\r",
+							"if (pm.test(\"Has properties\")) {\r",
+							"    pm.globals.set('bookAuthor_token', user.token);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"email\":\"mark@t.com\",\r\n\"password\":\"Pa$$w0rd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookid\":\"{{$guid}}\",\r\n    \"title\":\"\",\r\n    \"description\":\"Description of book\",\r\n    \"categoryid\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/books?Authorization=Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDIxNDUsImV4cCI6MTYxODkwNjk0NSwiaWF0IjoxNjE4MzAyMTQ1fQ.J1_uSpmpFnjraXYzLE_kyKnt11mlmkIcsj5ykjkcOTsNoc3QMhEHUztuB0LB8f9Yp9Ucio7sJMCvxkL8pa9upg",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDIxNDUsImV4cCI6MTYxODkwNjk0NSwiaWF0IjoxNjE4MzAyMTQ1fQ.J1_uSpmpFnjraXYzLE_kyKnt11mlmkIcsj5ykjkcOTsNoc3QMhEHUztuB0LB8f9Yp9Ucio7sJMCvxkL8pa9upg"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Book 1\",\r\n    \"description\":\"Description of book\",\r\n    \"categoryid\":\"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/books/43185243-f2b1-475c-abf3-02590e822aee",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"43185243-f2b1-475c-abf3-02590e822aee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete book",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJrIiwiZW1haWwiOiJtYXJrQHQuY29tIiwiZ2l2ZW5fbmFtZSI6Ik1hcmsiLCJuYmYiOjE2MTgzMDIxNDUsImV4cCI6MTYxODkwNjk0NSwiaWF0IjoxNjE4MzAyMTQ1fQ.J1_uSpmpFnjraXYzLE_kyKnt11mlmkIcsj5ykjkcOTsNoc3QMhEHUztuB0LB8f9Yp9Ucio7sJMCvxkL8pa9upg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/books/84601187-136f-403d-908b-2ea5e02f1bbd",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"84601187-136f-403d-908b-2ea5e02f1bbd"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:5000"
+		}
+	]
+}
